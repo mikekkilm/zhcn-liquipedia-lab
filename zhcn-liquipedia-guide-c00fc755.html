@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 zhcn-liquipedia – 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f5f7fb;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 — 导航 + hero 合并 */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      color: #e2e8f0;
+      padding: 2rem 1.5rem 4rem;
+      border-bottom: 4px solid #3b82f6;
+    }
+
+    .nav-bar {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      color: #94a3b8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #b0c4de;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #93c5fd;
+    }
+
+    /* 浅色正文区 */
+    .main-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-block {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .intro-block h2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 1rem;
+    }
+
+    .intro-text {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-text a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .intro-text a:hover {
+      color: #1d4ed8;
+    }
+
+    /* 三卡场景模块 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e9edf4;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border-color: #bdd3f0;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scene-card p {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* 常见说明 */
+    .faq-note {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .faq-note h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      min-width: 100px;
+      color: #1e293b;
+    }
+
+    .faq-a {
+      color: #475569;
+    }
+
+    .faq-a a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-a a:hover {
+      color: #1e40af;
+    }
+
+    /* 脚注 */
+    .site-footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 1rem;
+    }
+
+    .site-footer a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      .nav-bar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+      .intro-block {
+        padding: 1.8rem;
+      }
+      .faq-note {
+        padding: 1.5rem;
+      }
+      .faq-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .faq-q {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 深色头图（含导航） -->
+<header class="hero">
+  <div class="nav-bar">
+    <span class="nav-brand">zhcn‑liquipedia</span>
+    <div class="nav-links">
+      <a href="#">首页</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+      <a href="#">关于</a>
+    </div>
+  </div>
+  <div class="hero-content">
+    <h1>稳定入口 · 页面说明</h1>
+    <p>一份从结构出发的引言，帮助你快速了解这个站点所承载的内容与用途。</p>
+    <span class="hero-tagline">导航轻量 · 信息清晰</span>
+  </div>
+</header>
+
+<div class="main-wrapper">
+
+  <!-- 核心介绍 -->
+  <section>
+    <div class="intro-block">
+      <h2>关于这个页面</h2>
+      <div class="intro-text">
+        <p>许多人在初次接触某个资料库时，往往需要一个明确的起点——从哪里看、信息如何组织、哪些部分最常用。这个页面正是为此设计：它不替代主站，而是作为一层轻量导航，把几个典型的场景和信息模块放在前面。</p>
+        <p>你可以将它视作一页说明书，也可以当作一个快速索引。主站 <a href="https://zhcn-liquipedia.com">liquipedia</a> 本身已经积累了相当规模的条目和赛事档案，这里只选取了其中三个比较有代表性的使用方向，方便你判断下一步该往哪里走。</p>
+        <p>三个场景模块各自独立，没有先后顺序，你可以按兴趣直接跳转。每一块都配有简单的说明，不会有复杂的操作门槛。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <section>
+    <h2 style="font-weight:500; font-size:1.4rem; color:#0f172a; margin-bottom:1rem;">三个常见使用方向</h2>
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <h3><span class="card-icon">📋</span> 赛事归档</h3>
+        <p>如果你想回顾某场历史对局、查看赛季排名或者队伍变动，赛事归档模块提供结构化的时间线。页面按年份和地区分类，方便横向对比。</p>
+      </div>
+      <div class="scene-card">
+        <h3><span class="card-icon">🧩</span> 选手与战队</h3>
+        <p>个人资料、生涯数据、转会记录——这些信息分散在多个条目中。这里把常用的关联页面整理成一组，减少反复搜索的步骤。</p>
+      </div>
+      <div class="scene-card">
+        <h3><span class="card-icon">📖</span> 版本与更新</h3>
+        <p>游戏版本变动、补丁说明、平衡性调整——这些内容通常更新较快。模块汇总了近期改动和对应的讨论页面，适合持续关注的用户。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见说明 (FAQ摘要) -->
+  <section>
+    <div class="faq-note">
+      <h2>一点常见说明</h2>
+      <div class="faq-item">
+        <span class="faq-q">内容来源？</span>
+        <span class="faq-a">所有条目均来自社区维护的 <a href="https://zhcn-liquipedia.com">liquipedia</a> 数据库，页面结构经过整理，但原始信息以主站为准。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">页面更新频率</span>
+        <span class="faq-a">主站内容持续更新，本介绍页仅作导航用途，不会实时同步每个条目的最新变动。建议直接使用主站搜索。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">为什么是三个模块</span>
+        <span class="faq-a">三个方向覆盖了多数人首次访问时的典型需求，既不堆砌太多入口，也保留了扩展的可能。将来可能会根据反馈调整模块内容。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">遇到问题？</span>
+        <span class="faq-a">你可以先查看对应条目的讨论页，或者在主站帮助中心寻找指引。如果仍无法解决，可尝试通过站内反馈渠道联系维护者。</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <p>一个轻量的导航说明页 · 基于 <a href="https://zhcn-liquipedia.com">liquipedia</a> 内容结构</p>
+  <p style="margin-top:0.4rem; color:#94a3b8;">无需注册 · 开放查阅</p>
+</footer>
+
+</body>
+</html>
